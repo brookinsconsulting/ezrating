@@ -8,15 +8,15 @@ Example usage of the ezrating_summary template operator:
 <p>
 {for 1 to 5 as $i}
     {if $i|le($rating_summary.average_rating)}
-        <img src={"star.gif"|ezimage} />
+        <img src={"rating/star.gif"|ezimage} />
     {elseif $i|sub(0.25)|le($rating_summary.average_rating)}
-        <img src={"star-three-fourth.gif"|ezimage} />
+        <img src={"rating/star-three-fourth.gif"|ezimage} />
     {elseif $i|sub(0.5)|le($rating_summary.average_rating)}
-        <img src={"star-half.gif"|ezimage} />
+        <img src={"rating/star-half.gif"|ezimage} />
     {elseif $i|sub(0.75)|le($rating_summary.average_rating)}
-        <img src={"star-one-fourth.gif"|ezimage} />
+        <img src={"rating/star-one-fourth.gif"|ezimage} />
     {else}
-        <img src={"star-empty.gif"|ezimage} />
+        <img src={"rating/star-empty.gif"|ezimage} />
     {/if}
 {/for}
 </p>
@@ -26,3 +26,5 @@ Example usage of the ezrating_summary template operator:
 {if $rating_summary.reviewer_count|gt(1)}
 <p>Lowest rating {$rating_summary.min_rating}, highest rating {$rating_summary.max_rating}.</p>
 {/if}
+
+{undef $rating_summary}
