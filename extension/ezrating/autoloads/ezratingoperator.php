@@ -43,7 +43,7 @@ class eZRatingOperator
                 include_once( 'lib/ezdb/classes/ezdb.php' );
                 $db =& eZDB::instance();
 
-                $sql = "SELECT COUNT(a.data_int) reviewer_count, AVG(a.data_int) average_rating, MIN(a.data_int) min_rating, MAX(a.data_int) max_rating
+                $sql = "SELECT COUNT(a.data_int) AS reviewer_count, AVG(a.data_int) AS average_rating, MIN(a.data_int) AS min_rating, MAX(a.data_int) AS max_rating
                         FROM ezcontentobject_attribute a, ezcontentclass_attribute ca, ezcontentobject o, ezcontentobject_tree n
                         WHERE n.contentobject_id=o.id
                           AND n.parent_node_id=$nodeID
