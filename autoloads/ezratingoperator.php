@@ -7,7 +7,7 @@ class eZRatingOperator
         $this->Operators = array( 'ezrating_summary' );
     }
 
-    function &operatorList()
+    function operatorList()
     {
         return $this->Operators;
     }
@@ -31,7 +31,7 @@ class eZRatingOperator
         );
     }
 
-    function modify( &$tpl, &$operatorName, &$operatorParameters, &$rootNamespace, &$currentNamespace, &$operatorValue, &$namedParameters )
+    function modify( $tpl, $operatorName, $operatorParameters, $rootNamespace, $currentNamespace, &$operatorValue, $namedParameters )
     {
         switch ( $operatorName )
         {
@@ -40,8 +40,7 @@ class eZRatingOperator
                 $classAttrID = $namedParameters['class_attribute_id'];
                 $nodeID = $namedParameters['node_id'];
 
-                include_once( 'lib/ezdb/classes/ezdb.php' );
-                $db =& eZDB::instance();
+                $db = eZDB::instance();
 
                 $sql = "SELECT COUNT(a.data_int) AS reviewer_count, AVG(a.data_int) AS average_rating, MIN(a.data_int) AS min_rating, MAX(a.data_int) AS max_rating
                         FROM ezcontentobject_attribute a, ezcontentclass_attribute ca, ezcontentobject o, ezcontentobject_tree n
